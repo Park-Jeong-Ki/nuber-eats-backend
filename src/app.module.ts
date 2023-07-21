@@ -34,7 +34,8 @@ import * as Joi from 'joi';
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
       synchronize: true,
-      logging: true,
+      logging:
+        process.env.NODE_ENV !== 'prod' && process.env.NODE_ENV !== 'test',
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
     }),
   ],
